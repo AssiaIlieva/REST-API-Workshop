@@ -6,7 +6,7 @@ exports.register = async(userData) => {
 
     const user = await User.create(userData);
 
-    const token = jwt.sign({
+    const accessToken = jwt.sign({
         _id: user._id,
         email: user.email
     }, 'SOMESECRETHERE')
@@ -14,6 +14,6 @@ exports.register = async(userData) => {
     return {
         _id: user._id,
         email: user.email,
-        token,
+        accessToken,
     }
 }
